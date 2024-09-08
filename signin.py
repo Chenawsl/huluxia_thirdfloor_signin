@@ -42,9 +42,9 @@ def text_push(msg):
     if not text_url:
         raise ValueError("环境变量 WECHAT_ROBOT_URL 未设置")
     text_data = {
-        "msgtype": "image",
+        "msgtype": "text",
         "markdown": {
-            "content": msg,
+            "content": message,
             "mentioned_list": ["@all"],
             "mentioned_mobile_list": ["@all"]
         }
