@@ -43,8 +43,8 @@ def text_push(msg):
         raise ValueError("环境变量 WECHAT_ROBOT_URL 未设置")
     text_data = {
         "msgtype": "text",
-        "markdown": {
-            "content": message,
+        "text": {
+            "content": msg,
             "mentioned_list": ["@all"],
             "mentioned_mobile_list": ["@all"]
         }
