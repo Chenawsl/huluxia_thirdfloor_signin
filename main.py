@@ -23,6 +23,6 @@ for account in accounts:
     huluxia_signin_obj.huluxia_signin(account[0], account[1])
     time.sleep(60)
 
-text_push('**所有账号签到完成**')
+
 
 
