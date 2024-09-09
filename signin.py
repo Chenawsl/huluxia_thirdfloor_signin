@@ -42,11 +42,10 @@ def text_push(msg):
     if not text_url:
         raise ValueError("环境变量 WECHAT_ROBOT_URL 未设置")
     text_data = {
-        "msgtype": "markdown",
-        "markdown": {
+        "msgtype": "txet",
+        "txet": {
             "content": msg,
-            "mentioned_list": ["@all"],
-            "mentioned_mobile_list": ["@all"]
+           
         }
     }
     requests.post(url=text_url, json=text_data)
@@ -173,7 +172,18 @@ class HuluxiaSignin:
         :return: 签到结果
         """
         msg_result: str = ''  # 消息聚合
-        
+        self.set_config(acc, psd)
+        info = self.user_info()
+        msg_1 = f''
+        msg1 = f''
+        logger.info(msg_1)
+        logger.info(msg1)
+        msg_1 += msg1
+        text_push(msg_1)
+        time.sleep(1)
+        # text_push(msg1)
+        # msg_result += msg_1
+        exp_get = 0  # 经验值
         for ct in cat_id_dict.keys():
             self.cat_id = ct
             sign = self.sign_get().upper()
@@ -195,7 +205,7 @@ class HuluxiaSignin:
             try:
                 signin_res = signin_res.json()
             except Exception:
-                msg_2 = '<font color="warning">**出现错误！终止签到**</font>'
+                msg_2 = '**出现错误！终止签到**'
                 # msg_result += msg_2
                 text_push(msg_2)
                 logger.info(msg_2)
@@ -217,17 +227,21 @@ class HuluxiaSignin:
             # text_push(msg_4)
             exp_get += signin_exp
             time.sleep(3)
-       
+        msg_5 = f'本次签到共获得：{exp_get}经验值'
+        # msg_result += msg_5
+        logger.info(msg_5)
+        # text_push(msg_result)
+        text_push(msg_5)
         # 完成签到
         inf = self.user_info()
-        msg_6 = f'已为**{inf[0]}**完成签到\n'
+        msg_6 = f'已为<font color="warning">**{inf[0]}**</font>完成签到\n'
         # 经验值计算
         sign_day = (int(inf[3]) - int(inf[2])) / int(exp_get) + 1
-        msg6 = f'> 当前等级：Lv.{inf[1]}\n' \
-               f'> 当前经验值：{inf[2]}\n' \
-               f'> 已连续签到{self.signin_continue_days}天\n' \
-               f'> 下一等级目标经验值：{inf[3]}\n' \
-               f'> 还需签到{int(sign_day)}天'
+        msg6 = f' 当前等级：Lv.{inf[1]}\n' \
+               f' 当前经验值：{inf[2]}\n' \
+               f' 已连续签到{self.signin_continue_days}天\n' \
+               f' 下一等级目标经验值：{inf[3]}\n' \
+               f' 还需签到{int(sign_day)}天'
         logger.info(msg_6)
         # text_push(msg_6)
         msg_6 += msg6
