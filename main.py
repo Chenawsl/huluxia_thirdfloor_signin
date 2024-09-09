@@ -24,5 +24,7 @@ for account in accounts:
     time.sleep(60)
 
 
+# text_push('**所有账号签到完成**')
+
 
 
