@@ -42,9 +42,11 @@ def text_push(msg):
     if not text_url:
         raise ValueError("环境变量 WECHAT_ROBOT_URL 未设置")
     text_data = {
-        "msgtype": "text",
-        "text": {
+        "msgtype": "markdown",
+        "markdown": {
             "content": msg,
+            "mentioned_list": ["@all"],
+            "mentioned_mobile_list": ["@all"]
         }
     }
     requests.post(url=text_url, json=text_data)
@@ -170,6 +172,8 @@ class HuluxiaSignin:
         :param psd: 密码
         :return: 签到结果
         """
+        msg_result: str = ''  # 消息聚合
+        
         for ct in cat_id_dict.keys():
             self.cat_id = ct
             sign = self.sign_get().upper()
@@ -205,7 +209,15 @@ class HuluxiaSignin:
                 text_push(message)
                 time.sleep(3)
                 continue
-           
+            signin_exp = signin_res['experienceVal']
+            self.signin_continue_days = signin_res['continueDays']
+            msg_4 = f'【{cat_id_dict[self.cat_id]}】签到成功，经验+{signin_exp}\n\ncat_id:{self.cat_id}\n\n'
+            msg_result += msg_4
+            logger.info(msg_4)
+            # text_push(msg_4)
+            exp_get += signin_exp
+            time.sleep(3)
+       
         # 完成签到
         inf = self.user_info()
         msg_6 = f'已为**{inf[0]}**完成签到\n'
