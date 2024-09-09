@@ -173,14 +173,14 @@ class HuluxiaSignin:
         msg_result: str = ''  # 消息聚合
         self.set_config(acc, psd)
         info = self.user_info()
-        msg_1 = f'正在为**{info[0]}**>签到\n'
+        msg_1 = f'正在为**{info[0]}**签到\n'
         msg1 = f' 当前等级：Lv.{info[1]}\n' \
                f' 当前经验值：{info[2]}\n' \
                f' 下一等级目标经验值：{info[3]}'
         logger.info(msg_1)
         logger.info(msg1)
         msg_1 += msg1
-        text_push(msg_1)
+        # text_push(msg_1)
         time.sleep(1)
         # text_push(msg1)
         # msg_result += msg_1
@@ -232,7 +232,7 @@ class HuluxiaSignin:
         # msg_result += msg_5
         logger.info(msg_5)
         # text_push(msg_result)
-        text_push(msg_5)
+        # text_push(msg_5)
         # 完成签到
         inf = self.user_info()
         msg_6 = f'已为**{inf[0]}**完成签到\n'
