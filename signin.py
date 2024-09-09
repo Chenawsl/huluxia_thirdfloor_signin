@@ -45,7 +45,6 @@ def text_push(msg):
         "msgtype": "text",
         "text": {
             "content": msg,
-            "mentioned_list": ["@all"],
         }
     }
     requests.post(url=text_url, json=text_data)
