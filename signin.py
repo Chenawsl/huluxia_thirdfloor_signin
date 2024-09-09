@@ -170,21 +170,6 @@ class HuluxiaSignin:
         :param psd: 密码
         :return: 签到结果
         """
-        msg_result: str = ''  # 消息聚合
-        self.set_config(acc, psd)
-        info = self.user_info()
-        msg_1 = f'正在为<font color="warning">**{info[0]}**</font>签到\n'
-        msg1 = f'> 当前等级：Lv.{info[1]}\n' \
-               f'> 当前经验值：<font color="info">{info[2]}</font>\n' \
-               f'> 下一等级目标经验值：{info[3]}'
-        logger.info(msg_1)
-        logger.info(msg1)
-        msg_1 += msg1
-        text_push(msg_1)
-        time.sleep(1)
-        # text_push(msg1)
-        # msg_result += msg_1
-        exp_get = 0  # 经验值
         for ct in cat_id_dict.keys():
             self.cat_id = ct
             sign = self.sign_get().upper()
@@ -220,29 +205,17 @@ class HuluxiaSignin:
                 text_push(message)
                 time.sleep(3)
                 continue
-            signin_exp = signin_res['experienceVal']
-            self.signin_continue_days = signin_res['continueDays']
-            msg_4 = f'【{cat_id_dict[self.cat_id]}】签到成功，经验+{signin_exp}\n\ncat_id:{self.cat_id}\n\n'
-            msg_result += msg_4
-            logger.info(msg_4)
-            # text_push(msg_4)
-            exp_get += signin_exp
-            time.sleep(3)
-        msg_5 = f'本次签到共获得：{exp_get}经验值'
-        # msg_result += msg_5
-        logger.info(msg_5)
-        # text_push(msg_result)
-        text_push(msg_5)
+           
         # 完成签到
         inf = self.user_info()
-        msg_6 = f'已为<font color="warning">**{inf[0]}**</font>完成签到\n'
+        msg_6 = f'已为**{inf[0]}**完成签到\n'
         # 经验值计算
         sign_day = (int(inf[3]) - int(inf[2])) / int(exp_get) + 1
         msg6 = f'> 当前等级：Lv.{inf[1]}\n' \
-               f'> 当前经验值：<font color="info">{inf[2]}</font>\n' \
+               f'> 当前经验值：{inf[2]}\n' \
                f'> 已连续签到{self.signin_continue_days}天\n' \
                f'> 下一等级目标经验值：{inf[3]}\n' \
-               f'> 还需签到<font color="warning">{int(sign_day)}</font>天'
+               f'> 还需签到{int(sign_day)}天'
         logger.info(msg_6)
         # text_push(msg_6)
         msg_6 += msg6
