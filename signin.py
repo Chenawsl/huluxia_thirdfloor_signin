@@ -235,7 +235,7 @@ class HuluxiaSignin:
         # text_push(msg_5)
         # 完成签到
         inf = self.user_info()
-        msg_6 = f'已为**{inf[0]}**完成签到\n'
+        msg_6 = f' 已为**{inf[0]}**完成签到\n'
         # 经验值计算
         sign_day = (int(inf[3]) - int(inf[2])) / int(exp_get) + 1
         msg6 = f' 当前等级：Lv.{inf[1]}\n' \
