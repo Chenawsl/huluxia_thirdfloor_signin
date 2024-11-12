@@ -38,7 +38,7 @@ for phone, password in accounts:
 
 # 推送签到完成消息
 try:
-    text_push('**所有账号签到完成**')
+    # text_push('**所有账号签到完成**')
     logger.info("消息推送成功")
 except Exception as e:
     logger.error(f"消息推送失败: {e}")
