@@ -182,7 +182,7 @@ class HuluxiaSignin:
         logger.info(msg_1)
         logger.info(msg1)
         msg_1 += msg1
-        text_push(msg_1)
+        # text_push(msg_1)
         time.sleep(1)
         # text_push(msg1)
         # msg_result += msg_1
@@ -210,7 +210,7 @@ class HuluxiaSignin:
             except Exception:
                 msg_2 = '<font color="warning">**出现错误！终止签到**</font>'
                 # msg_result += msg_2
-                text_push(msg_2)
+                # text_push(msg_2)
                 logger.info(msg_2)
                 break
             # print(signin_res)
@@ -219,7 +219,7 @@ class HuluxiaSignin:
                 logger.info(signin_res)
                 message = f'【{cat_id_dict[self.cat_id]}】签到失败！请手动签到！'
                 logger.info(message)
-                text_push(message)
+                # text_push(message)
                 time.sleep(3)
                 continue
             signin_exp = signin_res['experienceVal']
@@ -234,7 +234,7 @@ class HuluxiaSignin:
         # msg_result += msg_5
         logger.info(msg_5)
         # text_push(msg_result)
-        text_push(msg_5)
+        # text_push(msg_5)
         # 完成签到
         inf = self.user_info()
         msg_6 = f'已为<font color="warning">**{inf[0]}**</font>完成签到\n'
