@@ -44,7 +44,7 @@ def text_push(msg):
     text_data = {
         "msgtype": "text",
         "markdown": {
-            "content": message,
+            "content": msg,
             "mentioned_list": ["@all"],
             "mentioned_mobile_list": ["@all"]
         }
