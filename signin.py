@@ -237,14 +237,14 @@ class HuluxiaSignin:
         # text_push(msg_5)
         # 完成签到
         inf = self.user_info()
-        msg_6 = f'已为<font color="warning">**{inf[0]}**</font>完成签到\n'
+        msg_6 = f'已为**{inf[0]}**完成签到\n'
         # 经验值计算
         sign_day = (int(inf[3]) - int(inf[2])) / int(exp_get) + 1
         msg6 = f'> 当前等级：Lv.{inf[1]}\n' \
-               f'> 当前经验值：<font color="info">{inf[2]}</font>\n' \
+               f'> 当前经验值：{inf[2]}\n' \
                f'> 已连续签到{self.signin_continue_days}天\n' \
                f'> 下一等级目标经验值：{inf[3]}\n' \
-               f'> 还需签到<font color="warning">{int(sign_day)}</font>天'
+               f'> 还需签到{int(sign_day)}天'
         logger.info(msg_6)
         # text_push(msg_6)
         msg_6 += msg6
