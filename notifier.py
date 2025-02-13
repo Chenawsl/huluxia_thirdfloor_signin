@@ -29,7 +29,7 @@ class WeChatNotifier(Notifier):
 
     def send(self, message: str):
         payload = {
-            "msgtype": "markdown",
+            "msgtype": "text",
             "markdown": {
                 "content": message,
                 "mentioned_list": ["@all"],
