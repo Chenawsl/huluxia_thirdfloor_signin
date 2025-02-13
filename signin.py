@@ -187,7 +187,7 @@ class HuluxiaSignin:
         self.set_config(acc, psd)
         info = self.user_info()
         initial_msg = f'正在为{info[0]}签到\n等级：Lv.{info[1]}\n经验值：{info[2]}/{info[3]}'
-        logger.info(initial_msg)
+        # logger.info(initial_msg)
 
         # 获取通知类型
         notifier_type = os.getenv("NOTIFIER_TYPE")
@@ -233,7 +233,7 @@ class HuluxiaSignin:
                     self.notifier.send(fail_msg)  # 微信即时发送
                 elif notifier_type == "email":
                     all_messages.append(fail_msg)  # 聚合消息（邮箱通知）
-                logger.warning(fail_msg)
+                # logger.warning(fail_msg)
                 time.sleep(3)
                 continue
 
@@ -245,7 +245,7 @@ class HuluxiaSignin:
                 self.notifier.send(success_msg)  # 微信即时发送
             elif notifier_type == "email":
                 all_messages.append(success_msg)  # 聚合消息（邮箱通知）
-            logger.info(success_msg)
+            # logger.info(success_msg)
             total_exp += signin_exp
             time.sleep(3)
 
@@ -255,7 +255,7 @@ class HuluxiaSignin:
             self.notifier.send(summary_msg)  # 微信即时发送
         elif notifier_type == "email":
             all_messages.append(summary_msg)  # 聚合消息（邮箱通知）
-        logger.info(summary_msg)
+        # logger.info(summary_msg)
 
         # 完成签到后的用户信息
         final_info = self.user_info()
