@@ -32,8 +32,8 @@ class WeChatNotifier(Notifier):
             "msgtype": "text",
             "text": {
                 "content": message,
-                "mentioned_list": ["@all"],
-                "mentioned_mobile_list": ["@all"]
+               # "mentioned_list": ["@all"],
+               # "mentioned_mobile_list": ["@all"]
             }
         }
         response = requests.post(url=self.webhook_url, json=payload)
