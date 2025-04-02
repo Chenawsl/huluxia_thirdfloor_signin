@@ -12,23 +12,17 @@ phone_brand_type_list = list(["MI", "Huawei", "UN", "OPPO", "VO"])  # 随机设�
 device_code_random = random.randint(111, 987)  # 随机设备识别码
 
 # 静态配置
-platform = '2'
-gkey = '000000'
-app_version = '4.3.1.5.2'
-versioncode = '398'
-market_id = 'floor_web'
-device_code = '%5Bd%5D5125c3c6-f' + str(device_code_random) + '-4c6b-81cf-9bc467522d61'
-phone_brand_type = random.choice(phone_brand_type_list)
-_key = ''
-cat_id = ''  # 版块id
-userid = ''  # 用户id
-signin_continue_days = ''  # 连续签到天数
+platform = '1'  # IOS平台
+app_version = '1.2.2'
+market_id = 'floor_huluxia'
 headers = {
-    "Connection": "close",
-    "Accept-Encoding": "gzip, deflate",
-    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    "User-Agent": "okhttp/3.8.1",
-    "Host": 'floor.huluxia.com'
+    "Host": "floor.huluxia.com",
+    "Accept": "*/*",
+    "Accept-Language": "zh-Hans-CN;q=1, en-GB;q=0.9, zh-Hant-CN;q=0.8",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept-Encoding": "gzip, deflate, br",
+    "User-Agent": "Floor/1.2.2 (iPhone; iOS 18.2; Scale/3.00)",
+    "Connection": "keep-alive"
 }
 session = requests.Session()
 # 版块id
