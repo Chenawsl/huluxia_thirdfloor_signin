@@ -1,7 +1,7 @@
 name: huluxia_signin
 on:
   schedule:    # 定时触发
-    - cron: '0 16 * * *'  # 24点
+    - cron: '0 1,5,10 * * *'  # 24点
   workflow_dispatch:  # 支持手动触发
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
           # 不需要的推送形式可以直接注释，反之你需要取消注释            
           NOTIFIER_TYPE: ${{ secrets.NOTIFIER_TYPE }} 
           # EMAIL_CONFIG: ${{ secrets.EMAIL_CONFIG }}
-          # WECHAT_ROBOT_URL: ${{ secrets.WECHAT_ROBOT_URL }}
+          WECHAT_ROBOT_URL: ${{ secrets.WECHAT_ROBOT_URL }}
           ACCOUNTS: ${{ secrets.ACCOUNTS }}
         run: |
           python ./main.py
