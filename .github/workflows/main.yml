@@ -21,9 +21,9 @@ jobs:
         id: signin-outputs
         env:
           # 不需要的推送形式可以直接注释，反之你需要取消注释            
-          #NOTIFIER_TYPE: ${{ secrets.NOTIFIER_TYPE }} 
+          NOTIFIER_TYPE: ${{ secrets.NOTIFIER_TYPE }} 
           # EMAIL_CONFIG: ${{ secrets.EMAIL_CONFIG }}
-          # WECHAT_ROBOT_URL: ${{"notifier":"wechatworkbot","params":{"markdown":false,"key":"a37c97ed-0347-4432-9cc8-838d4a779dd3"}}
-          #ACCOUNTS: ${{ secrets.ACCOUNTS }}
+          # WECHAT_ROBOT_URL: ${{ secrets.WECHAT_ROBOT_URL }}
+          ACCOUNTS: ${{ secrets.ACCOUNTS }}
         run: |
           python ./main.py
